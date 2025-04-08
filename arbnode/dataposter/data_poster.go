@@ -1043,7 +1043,7 @@ func (p *DataPoster) replaceTx(ctx context.Context, prevTx *storage.QueuedTransa
 func (p *DataPoster) updateNonce(ctx context.Context) error {
 	var blockNumQuery *big.Int
 	if p.waitForL1Finality() {
-		blockNumQuery = big.NewInt(int64(rpc.FinalizedBlockNumber))
+		blockNumQuery = big.NewInt(int64(rpc.LatestBlockNumber))
 	}
 	header, err := p.client.HeaderByNumber(ctx, blockNumQuery)
 	if err != nil {
